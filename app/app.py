@@ -6,9 +6,9 @@ Proporciona operaciones de suma, resta, multiplicación y división.
 
 from flask import Flask, render_template, request
 from .calculadora import sumar, restar, multiplicar, dividir
+import os
 
 app = Flask(__name__)
-
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -38,7 +38,11 @@ def index():
 
     return render_template("index.html", resultado=resultado)
 
+@app.route("/health")
+def health():
+    return "OK", 200
 
 if __name__ == "__main__":  # pragma: no cover
     # Quita debug=True para producción
-    app.run(debug=True, port=5000, host="0.0.0.0")
+    app_port = int(os.environ.get("PORT", 5000))
+    app.run(debug=False, port=app_port, host="0.0.0.0")
