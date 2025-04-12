@@ -34,7 +34,7 @@ def index():
         except ValueError:
             resultado = "Error: Introduce números válidos"
         except ZeroDivisionError:
-            resultado = "Error: No se puede dividir por cero"
+            resultado = "Error: No se puede dividir por cero!"
 
     return render_template("index.html", resultado=resultado)
 
