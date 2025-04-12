@@ -4,6 +4,7 @@ Este módulo define una aplicación Flask simple que actúa como una calculadora
 Proporciona operaciones de suma, resta, multiplicación y división.
 """
 
+import os
 from flask import Flask, render_template, request
 from .calculadora import sumar, restar, multiplicar, dividir
 
@@ -39,6 +40,13 @@ def index():
     return render_template("index.html", resultado=resultado)
 
 
+@app.route("/health")
+def health():
+    """Verifica la salud de la aplicación."""
+    return "OK", 200
+
+
 if __name__ == "__main__":  # pragma: no cover
     # Quita debug=True para producción
-    app.run(debug=True, port=5000, host="0.0.0.0")
+    app_port = int(os.environ.get("PORT", 5000))
+    app.run(debug=False, port=app_port, host="0.0.0.0")

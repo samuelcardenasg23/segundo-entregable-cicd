@@ -36,8 +36,7 @@ jobs:
         run: flake8 app --output-file=flake8-report.txt || true
 
       - name: Run Unit Tests with pytest and Coverage
-        run: |
-          pytest --ignore=tests/test_acceptance_app.py  # Genera un informe XML para SonarCloud
+        run: pytest --ignore=tests/test_acceptance_app.py  --ignore=tests/test_smoke_app.py
 
       - name: Run Acceptance Tests
         env:
