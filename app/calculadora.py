@@ -1,7 +1,9 @@
 # app/calculadora.py
 """
-Este módulo proporciona funciones básicas de cálculo: sumar, restar, multiplicar y dividir.
+Este módulo proporciona funciones básicas de cálculo: sumar, restar,
+multiplicar y dividir.
 """
+
 
 def sumar(a, b):
     """Devuelve la suma de a y b."""
