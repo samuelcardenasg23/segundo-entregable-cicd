@@ -1,4 +1,9 @@
 # app/app.py
+"""
+Este módulo define una aplicación Flask simple que actúa como una calculadora.
+Proporciona operaciones de suma, resta, multiplicación y división.
+"""
+
 from flask import Flask, render_template, request
 from .calculadora import sumar, restar, multiplicar, dividir
 
@@ -7,7 +12,8 @@ app = Flask(__name__)
 
 @app.route("/", methods=["GET", "POST"])
 def index():
-    """Maneja las solicitudes GET y POST para realizar operaciones de cálculo y renderizar el resultado."""
+    """Maneja las solicitudes GET y POST para realizar operaciones
+    de cálculo y renderizar el resultado."""
     resultado = None
     if request.method == "POST":
         try:
@@ -35,5 +41,7 @@ def index():
 
 if __name__ == "__main__":  # pragma: no cover
     app.run(
-        debug=True, port=5000, host="0.0.0.0"
+        debug=True,
+        port=5000,
+        host="0.0.0.0"
     )  # Quita debug=True para producción
